@@ -6,7 +6,10 @@ class MainController < ApplicationController
 
   def create
     Book.create!(name: params[:book_name])
-    redirect_to main_index_path
+    redirect_to main_index_path, notice: 'Book was added.'
+  end
+
+  def new
   end
 
   def show
@@ -20,12 +23,12 @@ class MainController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update!(book_params)
-    redirect_to book_path(book)
+    redirect_to main_index_path, notice: 'Book was updated.'
   end
 
   def destroy
     Book.find(params[:id]).destroy!
-    redirect_to main_index_path
+    redirect_to main_index_path, notice: 'Book was deleted.'
   end
 
   def about

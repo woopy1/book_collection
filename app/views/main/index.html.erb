@@ -1,11 +1,13 @@
 <h1>Book Collection</h1>
 <p>Welcome to the Book Collection App!</p>
 
-<p> Enter the title of a book to add it to the collection:</p>
-<%= form_with url: main_index_path, method: :post, local: true do |form| %>
-	<%= form.text_field :book_name, placeholder: "Book Title" %>
-	<%= form.submit "Add Book" %>
+<% if flash[:notice] %>
+	<script>
+		alert(<%= raw flash[:notice].to_json %>);
+	</script>
 <% end %>
+
+<%= link_to "Add a book", new_book_path %>
 
 <h2> Collection of Books</h2>
 

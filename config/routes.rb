@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "main#index"
   get "main/index"
   post "main/index", to: "main#create"
+  get "books/new", to: "main#new", as: :new_book
   get "books/:id", to: "main#show", as: :book
   get "books/:id/edit", to: "main#edit", as: :edit_book
   patch "books/:id", to: "main#update"
