@@ -1,7 +1,22 @@
 <h1>Book Collection</h1>
 <p>Welcome to the Book Collection App!</p>
 
-<a href="/about">About page</a><br />
+<p> Enter the title of a book to add it to the collection:</p>
+<%= form_with url: main_index_path, method: :post, local: true do |form| %>
+	<%= form.text_field :book_name, placeholder: "Book Title" %>
+	<%= form.submit "Add Book" %>
+<% end %>
 
-<%= link_to('About 2', '/about') %> <br />
-<%= link_to('About 3', {action: 'about', page: 5, id: 20}) %> <br />
+<h2> Collection of Books</h2>
+
+<ul>
+	<% @books.each do |book| %>
+		<li>
+			<%= link_to book.name, book_path(book) %>
+			<%= link_to "Edit", edit_book_path(book) %>
+			<%= button_to "Delete", book_path(book), method: :delete,
+				data: { turbo_confirm: "Delete #{book.name}?" } %>
+		</li>
+	<% end %>
+</ul>
+

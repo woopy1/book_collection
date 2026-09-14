@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root "main#index"
   get "main/index"
+  post "main/index", to: "main#create"
+  get "books/:id", to: "main#show", as: :book
+  get "books/:id/edit", to: "main#edit", as: :edit_book
+  patch "books/:id", to: "main#update"
+  put "books/:id", to: "main#update"
+  delete "books/:id", to: "main#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   match 'about', to: 'main#about', via: :get
   match 'hello', to: 'main#hello', via: :get

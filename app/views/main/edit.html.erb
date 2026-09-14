@@ -1,0 +1,27 @@
+<h1>Edit Book</h1>
+
+<%= form_with model: @book, url: book_path(@book), method: :patch, local: true do |form| %>
+  <p>
+    <%= form.label :name, "Title" %><br>
+    <%= form.text_field :name, required: true %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :position %><br>
+    <%= form.number_field :position %>
+  </p>
+
+  <p>
+    <%= form.label :completed %>
+    <%= form.check_box :completed %>
+  </p>
+
+  <%= form.submit "Save changes" %>
+<% end %>
+
+<%= link_to "Back to book", book_path(@book) %>
