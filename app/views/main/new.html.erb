@@ -1,0 +1,9 @@
+<h1>Add a Book</h1>
+
+<p>Enter the title of a book to add it to the collection:</p>
+<%= form_with url: main_index_path, method: :post, local: true do |form| %>
+  <%= form.text_field :book_name, placeholder: "Book Title", required: true %>
+  <%= form.submit "Add Book" %>
+<% end %>
+
+<%= link_to "Back to main page", main_index_path %>
