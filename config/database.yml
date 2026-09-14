@@ -25,7 +25,7 @@ default: &default
 
 development:
   <<: *default
-  database: book_collection2_development
+  database: book_collection_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: book_collection2_test
+  database: book_collection_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,18 +84,16 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: book_collection2_production
-    username: book_collection2
-    password: <%= ENV["BOOK_COLLECTION2_DATABASE_PASSWORD"] %>
+    url: <%= ENV.fetch("DATABASE_URL") %>
   cache:
     <<: *primary_production
-    database: book_collection2_production_cache
+    database: book_collection_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: book_collection2_production_queue
+    database: book_collection_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: book_collection2_production_cable
+    database: book_collection_production_cable
     migrations_paths: db/cable_migrate
