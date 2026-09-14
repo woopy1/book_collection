@@ -1,0 +1,5 @@
+<h1>User Book</h1>
+<p><strong>User:</strong> <%= @user_book.user.username %></p>
+<p><strong>Book:</strong> <%= @user_book.book.title %></p>
+<%= link_to "Edit", edit_user_book_path(@user_book) %> |
+<%= link_to "Back", user_books_path %>

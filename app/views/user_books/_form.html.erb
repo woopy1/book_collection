@@ -1,0 +1,19 @@
+<%= form_with model: user_book do |form| %>
+  <% if user_book.errors.any? %>
+    <ul>
+      <% user_book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, "User" %>
+    <%= form.select :user_id, User.order(:username).map { |user| [user.username, user.id] }, { include_blank: true }, id: "id_of_the_user_id_select_box" %>
+  </div>
+  <div>
+    <%= form.label :book_id, "Book" %>
+    <%= form.select :book_id, Book.order(:title).map { |book| [book.title, book.id] }, { include_blank: true }, id: "id_of_the_book_id_select_box" %>
+  </div>
+  <div><%= form.submit %></div>
+<% end %>

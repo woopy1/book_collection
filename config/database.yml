@@ -84,7 +84,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    url: <%= ENV.fetch("DATABASE_URL") %>
+    url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/book_collection_production") %>
   cache:
     <<: *primary_production
     database: book_collection_production_cache

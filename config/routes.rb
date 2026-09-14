@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root "main#index"
+  root "user_books#index"
+  resources :users
+  resources :user_books
+  get "books", to: "main#index", as: :books
   get "main/index"
   post "main/index", to: "main#create"
   get "books/new", to: "main#new", as: :new_book
