@@ -14,10 +14,10 @@
 <ul>
 	<% @books.each do |book| %>
 		<li>
-			<%= link_to book.name, book_path(book) %>
+			<%= link_to book.title, book_path(book) %>
 			<%= link_to "Edit", edit_book_path(book) %>
 			<%= button_to "Delete", book_path(book), method: :delete,
-				data: { turbo_confirm: "Delete #{book.name}?" } %>
+				data: { turbo_confirm: "Delete #{book.title}?" } %>
 		</li>
 	<% end %>
 </ul>

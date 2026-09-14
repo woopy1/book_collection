@@ -1,8 +1,27 @@
 <h1>Add a Book</h1>
 
-<p>Enter the title of a book to add it to the collection:</p>
-<%= form_with url: main_index_path, method: :post, local: true do |form| %>
-  <%= form.text_field :book_name, placeholder: "Book Title", required: true %>
+<% if flash[:alert] %>
+  <script>
+    alert(<%= raw flash[:alert].to_json %>);
+  </script>
+<% end %>
+
+<%= form_with model: Book.new, url: main_index_path, method: :post, local: true do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title, placeholder: "Book Title", required: true %>
+
+  <%= form.label :author %>
+  <%= form.text_field :author %>
+
+  <%= form.label :price %>
+  <%= form.number_field :price, step: 0.01 %>
+
+  <%= form.label :published_date %>
+  <%= form.date_select :published_date, prompt: true %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
   <%= form.submit "Add Book" %>
 <% end %>
 

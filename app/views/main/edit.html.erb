@@ -2,8 +2,23 @@
 
 <%= form_with model: @book, url: book_path(@book), method: :patch, local: true do |form| %>
   <p>
-    <%= form.label :name, "Title" %><br>
-    <%= form.text_field :name, required: true %>
+    <%= form.label :title, "Title" %><br>
+    <%= form.text_field :title, required: true %>
+  </p>
+
+  <p>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %>
+  </p>
+
+  <p>
+    <%= form.label :price %><br>
+    <%= form.number_field :price, step: 0.01 %>
+  </p>
+
+  <p>
+    <%= form.label :published_date %><br>
+    <%= form.date_select :published_date, prompt: true %>
   </p>
 
   <p>
