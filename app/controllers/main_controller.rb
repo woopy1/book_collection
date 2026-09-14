@@ -5,8 +5,17 @@ class MainController < ApplicationController
   end
 
   def create
-    Book.create!(name: params[:book_name])
-    redirect_to main_index_path, notice: 'Book was added.'
+    if book_params.blank?
+      redirect_to new_book_path, alert: "Book parameters are missing."
+      return
+    end
+    book = Book.new(book_params)
+
+    if book.save
+      redirect_to main_index_path, notice: 'Book was added.'
+    else
+      redirect_to new_book_path, alert: "#{book.errors.full_messages.to_sentence}."
+    end
   end
 
   def new
@@ -42,6 +51,9 @@ class MainController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:name, :description, :position, :completed)
+    params.require(:book).permit(
+      :title, :author, :price, :published_date,
+      :description, :position, :completed
+    )
   end
 end

@@ -1,5 +1,8 @@
-<h1><%= @book.name %></h1>
+<h1><%= @book.title %></h1>
 
+<p><strong>Author:</strong> <%= @book.author.presence || "None" %></p>
+<p><strong>Price:</strong> <%= @book.price || "None" %></p>
+<p><strong>Published date:</strong> <%= @book.published_date || "None" %></p>
 <p><strong>Description:</strong> <%= @book.description.presence || "None" %></p>
 <p><strong>Position:</strong> <%= @book.position || "None" %></p>
 <p><strong>Completed:</strong> <%= @book.completed ? "Yes" : "No" %></p>
