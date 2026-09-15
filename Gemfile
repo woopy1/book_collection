@@ -63,4 +63,4 @@ group :test do
 end
 gem 'concurrent-ruby', '1.3.4'
 gem "json", "< 3.0"
-gem "rspec-rails", "~> 6.0.0"
+gem "rspec-rails", "~> 8.0.4"
