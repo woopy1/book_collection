@@ -271,8 +271,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  google_client_id = Rails.application.credentials.dig(:google, :client_id).presence || ENV["GOOGLE_OAUTH_CLIENT_ID"].presence || ENV["GOOGLE_CLIENT_ID"].presence
-  google_client_secret = Rails.application.credentials.dig(:google, :client_secret).presence || ENV["GOOGLE_OAUTH_CLIENT_SECRET"].presence || ENV["GOOGLE_CLIENT_SECRET"].presence
+  google_client_id = ENV["GOOGLE_OAUTH_CLIENT_ID"].presence || ENV["GOOGLE_CLIENT_ID"].presence || Rails.application.credentials.dig(:google, :client_id).presence
+  google_client_secret = ENV["GOOGLE_OAUTH_CLIENT_SECRET"].presence || ENV["GOOGLE_CLIENT_SECRET"].presence || Rails.application.credentials.dig(:google, :client_secret).presence
   if Rails.env.development? && (google_client_id.blank? || google_client_secret.blank?)
     raise "Missing GOOGLE_OAUTH_CLIENT_ID and GOOGLE_OAUTH_CLIENT_SECRET"
   end
