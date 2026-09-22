@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "user_books#index"
+  get "dashboard", to: "dashboards#show", as: :dashboard
   resources :users
   resources :user_books
   get "books", to: "main#index", as: :books
@@ -24,4 +24,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    omniauth_callbacks: 'admins/omniauth_callbacks'
+  }
+
+  devise_scope :admin do
+    get "admins/sign_in", to: "admins/sessions#new", as: :new_admin_session
+    delete "admins/sign_out", to: "admins/sessions#destroy", as: :destroy_admin_session
+    root "admins/sessions#new"
+  end
 end
